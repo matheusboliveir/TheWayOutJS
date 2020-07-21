@@ -2,8 +2,16 @@
     padding: 0;
     margin: 0;
 }
-#tela{ 
-    border:solid 1px black;
-    width: 600px;
-    height: 600px;
+body{
+    width: 100vw;
+    height: 100vh;
+}
+#tela{
+    background: url(../maps/background-test.jpg) no-repeat center;
+    background-size: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    width: 720px;
+    height: 480px;
 }
