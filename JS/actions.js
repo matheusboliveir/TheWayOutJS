@@ -4,6 +4,7 @@ export default class {
         this.player = player;
         this.keysIndex = [87, 65, 83, 68];
         this.countAnimation = 0;
+        this.move = 0;
     }
     KeyAction(teclas, canvas) {
         const commands = {
@@ -35,11 +36,12 @@ export default class {
         this.keysIndex.map((e) => {
             if (teclas[e]) {
                 commands[e](this.player);
+                this.move = e;
             }
         });
-        this.animation(teclas);
+        this.animation(teclas, this.move);
     }
-    animation(teclas) {
+    animation(teclas, e) {
         switch (true) {
             case teclas[87] && teclas[83]:
                 this.player.spriteX = 0;
@@ -47,7 +49,7 @@ export default class {
             case teclas[65] && teclas[68]:
                 this.player.spriteX = 0;
                 break;
-            case teclas[87] || teclas[65] || teclas[83] || teclas[68]:
+            case teclas[e]:
                 this.countAnimation++;
                 if (this.countAnimation >= 44) {
                     this.countAnimation = 0;
