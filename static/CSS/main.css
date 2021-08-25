@@ -7,7 +7,7 @@ body{
     height: 100vh;
 }
 #tela{
-    background: url(../maps/background-test.jpg) no-repeat center;
+    background: url(../images/maps/background-test.jpg) no-repeat center;
     background-size: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;

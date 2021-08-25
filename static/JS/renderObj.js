@@ -3,7 +3,6 @@ export default class{
         this.canvas = canvas;
     }
     mob(mob){
-        
         this.canvas.fillRect()
     }    
 }

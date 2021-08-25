@@ -33,7 +33,7 @@ export default class {
                 }
             }
         }
-        this.keysIndex.map((e) => {
+        this.keysIndex.map(e => {
             if (teclas[e]) {
                 commands[e](this.player);
                 this.move = e;

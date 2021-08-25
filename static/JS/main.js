@@ -15,7 +15,7 @@ const player = {
     spriteX: 0,
     spriteY: 0,
     sprites:{
-        child: "./sprites/sprite-test01.png",
+        child: "../images/sprites/sprite-test01.png",
         shot: "",
         sword: "",
         fire: "",
@@ -27,8 +27,6 @@ const action = new actions(player);
 render();
 function render(){
     sprite.src = player.sprites[player.power];
-    //ctx.canvas.width = body.clientWidth;
-    //ctx.canvas.height = body.clientHeight;
     action.KeyAction(keys,ctx);
     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
     ctx.drawImage(sprite,player.spriteX,player.spriteY,player.width,player.height,player.x,player.y,player.width,player.height);
