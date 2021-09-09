@@ -1,4 +1,4 @@
-export default class {
+export class Controls {
 
     constructor(player) {
         this.player = player;

@@ -1,0 +1,80 @@
+{
+    "player": {
+        "width": 22,
+        "height": 29,
+        "spriteX": 0,
+        "spriteY": 0,
+        "sprites":{
+            "shild": "../images/sprites/sprite-test01.png",
+            "shot": "",
+            "sword": "",
+            "fire": "",
+            "rope": ""
+        }
+    },
+    "mobs": [
+        {
+            "name": "shotgunBoy",
+            "value": 100,
+            "power": "shot",
+            "src": "",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        },
+        {
+            "name": "swordBoy",
+            "value": 100,
+            "power": "sword",
+            "src": "",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        },
+        {
+            "name": "fireBoy",
+            "value": 100,
+            "src": "",
+            "power": "fire",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        },
+        {
+            "name": "ropeBoy",
+            "value": 100,
+            "power": "rope",
+            "src": "",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        }
+    ],
+    "blocks": [
+        {
+            "src": "",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        },
+        {
+            "src": "",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        },
+        {
+            "src": "",
+            "spriteX": 0,
+            "spriteY": 0,
+            "width": 0,
+            "height": 0
+        }
+    ]
+}

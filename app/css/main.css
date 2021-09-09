@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.game-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-container canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    width: 100%;
+    max-width: 1280px;
+    position: absolute;
+}
+
+#backgroundLayer {
+    background: url(../images/maps/background-test.jpg) no-repeat center;
+    background-size: contain;
+}

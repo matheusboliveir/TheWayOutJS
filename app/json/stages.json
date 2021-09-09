@@ -1,0 +1,113 @@
+{
+    "shild": {
+        "map": "../images/maps/background-test.jpg",
+        "rooms": [
+            {
+                "mobs": [
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    }
+                ],
+                "blocks": [
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": 1,
+                        "x": 0,
+                        "y": 0
+                    }
+                ]
+            }
+        ],
+        "nextFase": "",
+        "player": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 60
+        },
+        "description": ""
+    },
+    "sword": {
+        "map": "",
+        "mobs": [],
+        "nextFase": "",
+        "player": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 60
+        },
+        "blocks": [],
+        "description": ""
+    },
+    "rope": {
+        "map": "",
+        "mobs": [],
+        "nextFase": "",
+        "player": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 60
+        },
+        "blocks": [],
+        "description": ""
+    },
+    "fire": {
+        "map": "",
+        "mobs": [],
+        "nextFase": "",
+        "player": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 60
+        },
+        "blocks": [],
+        "description": ""
+    },
+    "gun": {
+        "map": "",
+        "mobs": [],
+        "nextFase": "",
+        "player": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 60
+        },
+        "blocks": [],
+        "description": ""
+    }
+}
