@@ -18,8 +18,3 @@
     max-width: 1280px;
     position: absolute;
 }
-
-#backgroundLayer {
-    background: url(../images/maps/background-test.jpg) no-repeat center;
-    background-size: contain;
-}
