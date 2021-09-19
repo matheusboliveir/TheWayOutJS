@@ -1,27 +1,34 @@
-class Renderer {
-    constructor(canvas) {
-        this.canvas = canvas;
-    }
+const Controls = require('./controls');
+const renderer = require('./renderer-handler');
+const { keys } = require('./keyboard-listener');
+const JsonHandler = require('../../json-handler');
+const { loadSave } = require('./stage-loader');
 
-    draw(model, layer) {
-        const sprites = new Image();
-        sprites.src = model.src || model.sprites[model.power];
-        this.canvas[layer].drawImage(
-            sprites,
-            model.spriteX, model.spriteY, model.width, model.height,
-            model.x, model.y, model.width, model.height);
-    }
+const layers = bgLayer = [
+    document.querySelector("#backgroundLayer").getContext('2d'),
+    document.querySelector("#playerLayer").getContext('2d'),
+    document.querySelector("#mobLayer").getContext('2d'),
+    document.querySelector("#overlayLayer").getContext('2d'),
+];
 
-    clean(layers = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]) {
-        layers.forEach(layer => {
-            this.canvas[layer.id].clearRect(
-                layer.x || 0,
-                layer.y || 0,
-                layer.width || this.canvas[layer.id].canvas.width,
-                layer.height || this.canvas[layer.id].canvas.height);
-        });
-    }
+const save = JsonHandler.load('./app/json/saves/save-01.json');
+const action = new Controls(save.player);
 
-}
-export default Renderer;
+window.addEventListener('DOMContentLoaded', () => {
+    loadSave(save, layers);
+    start();
+});
 
+function start() {
+    renderer.loadImage(save.player).then(img => {
+        renderer.clean(layers, [{
+            id: 1,
+            x: save.player.x,
+            y: save.player.y,
+            width: save.player.width,
+            height: save.player.height
+        }]);
+        action.KeyAction(keys, layers[1]);
+        renderer.draw(layers, save.player, 1, img)
+    }).finally(window.requestAnimationFrame(start))
+};
