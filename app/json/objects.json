@@ -1,11 +1,14 @@
 {
     "player": {
+        "power": [
+            "shild"
+        ],
         "width": 22,
         "height": 29,
         "spriteX": 0,
         "spriteY": 0,
         "sprites":{
-            "shild": "../images/sprites/sprite-test01.png",
+            "shild": "./images/sprites/sprite-test01.png",
             "shot": "",
             "sword": "",
             "fire": "",
@@ -56,18 +59,18 @@
     ],
     "blocks": [
         {
-            "src": "",
+            "src": "./images/blocks/shildBlocks.png",
             "spriteX": 0,
             "spriteY": 0,
-            "width": 0,
-            "height": 0
+            "width": 64,
+            "height": 24
         },
         {
-            "src": "",
+            "src": "./images/sprites/sprite-test01.png",
             "spriteX": 0,
             "spriteY": 0,
-            "width": 0,
-            "height": 0
+            "width": 64, 
+            "height": 24
         },
         {
             "src": "",

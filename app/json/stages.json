@@ -1,6 +1,6 @@
 {
     "shild": {
-        "map": "../images/maps/background-test.jpg",
+        "map": "./images/maps/background-test.jpg",
         "rooms": [
             {
                 "mobs": [
