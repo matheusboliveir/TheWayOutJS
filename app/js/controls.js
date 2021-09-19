@@ -1,64 +1,99 @@
-export class Controls {
+class Controls {
 
     constructor(player) {
         this.player = player;
-        this.keysIndex = [87, 65, 83, 68];
+        this.keysIndex = [37, 38, 39, 40];
         this.countAnimation = 0;
         this.move = 0;
+        this.spriteLine = {
+            38: player.height * 3,
+            40: 0,
+            37: player.height, 
+            39: player.height * 2
+        }
     }
-    KeyAction(teclas, canvas) {
+    KeyAction(key, canvas) {
         const commands = {
-            87(player) {
+            38(player, spriteLine) {
                 if (player.y - 1 >= 0) {
                     player.y -= 2;
-                    player.spriteY = player.height * 3;
+                    player.spriteY = spriteLine[38];
                 }
             },
-            83(player) {
+            40(player, spriteLine) {
                 if (player.y < canvas.canvas.height - player.height) {
                     player.y += 2;
-                    player.spriteY = 0;
+                    player.spriteY = spriteLine[40];
                 }
             },
-            65(player) {
+            37(player, spriteLine) {
                 if (player.x - 1 >= 0) {
                     player.x -= 2;
-                    player.spriteY = player.height;
+                    player.spriteY = spriteLine[37];
                 }
             },
-            68(player) {
+            39(player, spriteLine) {
                 if (player.x < canvas.canvas.width - player.width) {
                     player.x += 2;
-                    player.spriteY = player.height * 2;
+                    player.spriteY = spriteLine[39];
                 }
             }
         }
-        this.keysIndex.map(e => {
-            if (teclas[e]) {
-                commands[e](this.player);
+        this.keysIndex.forEach(e => {
+            if (key.akp[e]) {
+                commands[e](this.player,this.spriteLine);
                 this.move = e;
             }
         });
-        this.animation(teclas, this.move);
+        this.animationHandler(key.akp, this.move, key.lkp);
     }
-    animation(teclas, e) {
+    animationHandler(keys, e, lkp) {
+        let keysPressed = keys.filter(a => a === true);
+
         switch (true) {
-            case teclas[87] && teclas[83]:
+            case keys[38] && keys[40] && keys[37] && keys[39]:
+                this.player.spriteY = this.spriteLine[lkp];
                 this.player.spriteX = 0;
                 break;
-            case teclas[65] && teclas[68]:
-                this.player.spriteX = 0;
-                break;
-            case teclas[e]:
-                this.countAnimation++;
-                if (this.countAnimation >= 44) {
-                    this.countAnimation = 0;
+            case keys[38] && keys[40]:
+                if(keysPressed.length >= 3) {
+                    this.player.spriteY = this.spriteLine[
+                        keys[37] ? 37 : 39
+                    ];
+                    this.animate();
+                }else{
+                    this.player.spriteY = this.spriteLine[lkp];
+                    this.player.spriteX = 0;
                 }
-                this.player.spriteX = Math.floor(this.countAnimation / 4) * this.player.width;
+                break;
+            case keys[37] && keys[39]:
+                if(keysPressed.length >= 3) {
+                    this.player.spriteY = this.spriteLine[
+                        keys[38] ? 38 : 40
+                    ];
+                    this.animate();
+                }else{
+                    this.player.spriteY = this.spriteLine[lkp];
+                    this.player.spriteX = 0;
+                }
+                break;
+            case keys[e]:
+                this.animate();
                 break;
             default:
                 this.player.spriteX = 0;
                 break;
         }
     }
+
+    animate(){
+        this.countAnimation++;
+        if (this.countAnimation >= 44) {
+            this.countAnimation = 0;
+        }
+        this.player.spriteX = Math.floor(this.countAnimation / 4) * this.player.width;
+    }
+
 }
+
+module.exports = Controls;
