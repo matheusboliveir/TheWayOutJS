@@ -1,47 +1,54 @@
+const colision = require('./collision-detector');
 class Controls {
 
-    constructor(player) {
-        this.player = player;
+    constructor(save) {
+        this.player = save.player;
         this.keysIndex = [37, 38, 39, 40];
         this.countAnimation = 0;
         this.move = 0;
         this.spriteLine = {
-            38: player.height * 3,
+            38: this.player.height * 3,
             40: 0,
-            37: player.height, 
-            39: player.height * 2
-        }
+            37: this.player.height,
+            39: this.player.height * 2
+        };
+        this.blocks = save.stage.room.blocks;
+
     }
     KeyAction(key, canvas) {
         const commands = {
-            38(player, spriteLine) {
-                if (player.y - 1 >= 0) {
+            38(player, spriteLine, blocks) {
+                player.spriteY = spriteLine[38];
+                if (player.y - 1 >= 0
+                    && colision(player, blocks, 'y', '-')) {
                     player.y -= 2;
-                    player.spriteY = spriteLine[38];
                 }
             },
-            40(player, spriteLine) {
-                if (player.y < canvas.canvas.height - player.height) {
+            40(player, spriteLine, blocks) {
+                player.spriteY = spriteLine[40];
+                if (player.y < canvas.canvas.height - player.height
+                    && colision(player,blocks,'y','+')) {
                     player.y += 2;
-                    player.spriteY = spriteLine[40];
                 }
             },
-            37(player, spriteLine) {
-                if (player.x - 1 >= 0) {
+            37(player, spriteLine, blocks) {
+                player.spriteY = spriteLine[37];
+                if (player.x - 1 >= 0
+                    && colision(player,blocks,'x','-')) {
                     player.x -= 2;
-                    player.spriteY = spriteLine[37];
                 }
             },
-            39(player, spriteLine) {
-                if (player.x < canvas.canvas.width - player.width) {
+            39(player, spriteLine, blocks) {
+                player.spriteY = spriteLine[39];
+                if (player.x < canvas.canvas.width - player.width
+                    && colision(player,blocks,'x','+')) {
                     player.x += 2;
-                    player.spriteY = spriteLine[39];
                 }
             }
         }
         this.keysIndex.forEach(e => {
             if (key.akp[e]) {
-                commands[e](this.player,this.spriteLine);
+                commands[e](this.player, this.spriteLine, this.blocks);
                 this.move = e;
             }
         });
@@ -56,23 +63,23 @@ class Controls {
                 this.player.spriteX = 0;
                 break;
             case keys[38] && keys[40]:
-                if(keysPressed.length >= 3) {
+                if (keysPressed.length >= 3) {
                     this.player.spriteY = this.spriteLine[
                         keys[37] ? 37 : 39
                     ];
                     this.animate();
-                }else{
+                } else {
                     this.player.spriteY = this.spriteLine[lkp];
                     this.player.spriteX = 0;
                 }
                 break;
             case keys[37] && keys[39]:
-                if(keysPressed.length >= 3) {
+                if (keysPressed.length >= 3) {
                     this.player.spriteY = this.spriteLine[
                         keys[38] ? 38 : 40
                     ];
                     this.animate();
-                }else{
+                } else {
                     this.player.spriteY = this.spriteLine[lkp];
                     this.player.spriteX = 0;
                 }
@@ -86,7 +93,7 @@ class Controls {
         }
     }
 
-    animate(){
+    animate() {
         this.countAnimation++;
         if (this.countAnimation >= 44) {
             this.countAnimation = 0;
