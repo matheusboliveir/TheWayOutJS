@@ -12,7 +12,7 @@ const layers = bgLayer = [
 ];
 
 const save = JsonHandler.load('./app/json/saves/save-01.json');
-const action = new Controls(save.player);
+const action = new Controls(save);
 
 window.addEventListener('DOMContentLoaded', () => {
     loadSave(save, layers);
