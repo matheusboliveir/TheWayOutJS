@@ -1,2 +1,2 @@
 # TheWayOutJS
-Um jogo WEB feito somente com HTML CSS e JavaScript sem nenhuma biblioteca adicional.
+Um jogo WEB feito com HTML, CSS, JavaScript e Electron.
